@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS library;
-USE library;
-DROP TABLE IF EXISTS Loan;
+CREATE DATABASE IF NOT EXISTS library1;
+USE library1;
+DROP TABLE IF EXISTS Borrow;
 DROP TABLE IF EXISTS Book;
 DROP TABLE IF EXISTS Clients;
 DROP TABLE IF EXISTS Topic;
@@ -50,13 +50,13 @@ CREATE TABLE Book (
 	FOREIGN KEY (idTopic) REFERENCES Topic (idTopic) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
-CREATE TABLE Loan (
-	idLoan INT NOT NULL AUTO_INCREMENT,
-	DateLoan DATE NOT NULL,
+CREATE TABLE Borrow (
+	idBorrow INT NOT NULL AUTO_INCREMENT,
+	DateBorrow DATE NOT NULL,
 	DateDeliver DATE NOT NULL,
 	idClient INT NOT NULL,
 	idBook INT NOT NULL,
-	PRIMARY KEY (idLoan),
+	PRIMARY KEY (idBorrow),
 	FOREIGN KEY (idClient) REFERENCES Clients (idClient) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (idBook) REFERENCES Book (idBook) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
@@ -103,7 +103,7 @@ INSERT INTO Book (`ISBN`, `Title`, `NumberExemplars`, `idauthor`, `idpublishing`
 ('089984664-5', 'After the Thin Man', 0, 1, 3, 4),
 ('742307038-6', 'Playing for Keeps', 0, 5, 4, 5);
 
-INSERT INTO `Loan` (`DateLoan`,`DateDeliver`,`IdClient`,`idBook`)
+INSERT INTO `Borrow` (`DateBorrow`,`DateDeliver`,`IdClient`,`idBook`)
 VALUES
   ("14-01-21","02-02-21",4,5),
   ("24-01-21","03-02-21",2,6),
